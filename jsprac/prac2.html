@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fetch 시작하기</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        //fetch : 서버에서 데이터를 받아올 수 있는 url이 있다면 그 url에서 데이터를 가지고 오는 역할
+        //이 url에서 result를 가져와 fetch하는데, 그것을 json형태로 만들어 활용(세트로 생각)
+        fetch("http://spartacodingclub.shop/sparta_api/seoulair").then(res => res.json()).then(data => {
+            //RealtimeCityAir에 row까지 잘라가지고 그것을 list로 만듦
+            let rows= data['RealtimeCityAir']['row']
+            //list를 하나하나 돌려 구 이름과 데이터를 찍어준다.
+            rows.forEach((a) => {
+                console.log(a['MSRSTE_NM'],a['IDEX_MVL'])
+            })
+        })
+    </script>
+</head>
+
+<body>
+    Fetch 연습을 위한 페이지
+</body>
+</html>
+
